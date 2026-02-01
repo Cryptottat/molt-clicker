@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a24 50%, #0f0f18 100%);
+  min-height: 100vh;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* Pixel font sizing */
+.font-display {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6em;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.font-mono {
+  font-family: 'VT323', monospace;
+  font-size: 1.1em;
+}
+
+/* PIXELATED EMOJI - using CSS filter */
+span, .emoji {
+  font-family: 'VT323', monospace;
+}
+
+/* Emoji container with pixelation effect */
+[class*="emoji"], .pixel-emoji {
+  filter: contrast(1.2) saturate(1.3);
+  transform: scale(1);
+  image-rendering: pixelated;
+}
+
+/* Force pixelation on emoji spans */
+.pixel-sprite {
+  filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='pixelate'%3E%3CfeFlood x='0' y='0' width='4' height='4'/%3E%3CfeComposite width='8' height='8'/%3E%3CfeTile result='a'/%3E%3CfeComposite in='SourceGraphic' in2='a' operator='in'/%3E%3CfeMorphology operator='dilate' radius='2'/%3E%3C/filter%3E%3C/svg%3E#pixelate");
+}
+
+/* Emoji as pixel blocks */
+.beach-emoji {
+  font-family: 'VT323', monospace;
+  text-shadow: 
+    1px 0 0 currentColor,
+    0 1px 0 currentColor,
+    -1px 0 0 currentColor,
+    0 -1px 0 currentColor;
+  filter: contrast(1.3) brightness(1.1);
+  -webkit-text-stroke: 0.5px rgba(0,0,0,0.3);
+}
+
+/* Pixel border style */
+.pixel-border {
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #ff4d2a, #ff6b35) 1;
+  box-shadow: 
+    2px 2px 0 rgba(0,0,0,0.8),
+    inset 1px 1px 0 rgba(255,255,255,0.1);
+}
+
+/* Scrollbar - pixel style */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+  border-left: 1px solid #ff4d2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff4d2a;
+  border: 1px solid #0a0a0f;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 77, 42, 0.5);
+  color: #fff;
+}
+
+/* Grid background effect - pixel style */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(255, 77, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 77, 42, 0.03) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* Glow effects - pixel style */
+.text-glow {
+  text-shadow: 
+    1px 1px 0 rgba(0, 0, 0, 1),
+    2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.box-glow {
+  box-shadow: 
+    2px 2px 0 rgba(0, 0, 0, 0.8),
+    0 0 8px rgba(255, 77, 42, 0.3);
+}
+
+/* Claw click effect */
+.lobster-click {
+  animation: lobsterPop 0.1s steps(2);
+}
+
+@keyframes lobsterPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* Particle burst - pixel style */
+.particle {
+  position: absolute;
+  pointer-events: none;
+  animation: particleBurst 0.6s steps(6) forwards;
+}
+
+@keyframes particleBurst {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(0.5); }
+}
+
+/* Pixel neon border */
+.neon-border {
+  border: 1px solid #ff4d2a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Upgrade item hover - pixel style */
+.upgrade-item {
+  transition: transform 0.05s steps(1);
+}
+
+.upgrade-item:hover:not(:disabled) {
+  transform: translate(2px, -1px);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+}
+
+.upgrade-item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Counter animation - pixel style */
+.counter-bump {
+  animation: counterBump 0.1s steps(2);
+}
+
+@keyframes counterBump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Wallet button - smaller pixel style */
+.wallet-btn {
+  background: rgba(255, 77, 42, 0.1);
+  border: 1px solid #ff4d2a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  font-size: 10px;
+  padding: 4px 8px;
+}
+
+.wallet-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Button pixel style */
+button, a {
+  font-family: 'VT323', monospace;
+}
+
+/* Pixel text shadow for headings */
+h1, h2, h3 {
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 1);
+}
+
+/* Prevent text overflow */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Compact text sizes */
+.text-\[10px\] { font-size: 10px; line-height: 1.2; }
+.text-\[9px\] { font-size: 9px; line-height: 1.2; }
+.text-\[8px\] { font-size: 8px; line-height: 1.2; }
+.text-xs { font-size: 14px; line-height: 1.3; }
+.text-sm { font-size: 16px; line-height: 1.3; }
